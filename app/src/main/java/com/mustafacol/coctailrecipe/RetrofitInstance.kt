@@ -9,11 +9,15 @@ class RetrofitInstance {
     companion object {
         private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
-        fun getRetrofitInstance(): Retrofit {
+        private fun retrofit(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build()
+        }
+
+        val retrofitInstance: CocktailService by lazy {
+            retrofit().create(CocktailService::class.java)
         }
     }
 }

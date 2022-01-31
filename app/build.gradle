@@ -31,12 +31,16 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures{
-        dataBinding true
+        viewBinding true
     }
 }
 
 dependencies {
 
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def retrofit_version = "2.9.0"
     def lifecycle_version = "2.4.0"
 

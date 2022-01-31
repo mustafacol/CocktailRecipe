@@ -1,63 +1,37 @@
 package com.mustafacol.coctailrecipe
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.liveData
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.mustafacol.coctailrecipe.adapter.CocktailsRecyclerViewAdapter
-import com.mustafacol.coctailrecipe.model.BaseDrink
-import com.mustafacol.coctailrecipe.model.Drinks
-import retrofit2.Response
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mustafacol.coctailrecipe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var cocktailRecyclerView: RecyclerView
-    var cocktailDrinkList: MutableList<BaseDrink> = mutableListOf()
-    private lateinit var cocktailRecyclerViewAdapter: CocktailsRecyclerViewAdapter
-    @SuppressLint("NotifyDataSetChanged")
+
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setRecyclerView()
+        val navView: BottomNavigationView = binding.navigationView
+        val navController = findNavController(R.id.navigation_host)
 
-        val retService = RetrofitInstance.getRetrofitInstance()
-            .create(CocktailService::class.java)
-
-
-        val responseLiveData: LiveData<Response<Drinks>> = liveData {
-            val response = retService.getCocktailByName("margarita")
-            emit(response)
-        }
-
-
-
-        responseLiveData.observe(this, Observer {
-            if (it.isSuccessful) {
-                val responseDrinks = it.body()?.drinks
-
-                cocktailDrinkList.addAll(responseDrinks?.toMutableList()!!)
-                cocktailRecyclerViewAdapter.notifyDataSetChanged()
-            }
-
-        })
-
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_favorites, R.id.navigation_cocktailList, R.id.navigation_random
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
 
     }
 
-    private fun setRecyclerView() {
-        cocktailRecyclerView = findViewById(R.id.coctailRecyclerView)
-        cocktailRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        cocktailRecyclerViewAdapter = CocktailsRecyclerViewAdapter(cocktailDrinkList)
-
-        cocktailRecyclerView.adapter = cocktailRecyclerViewAdapter
-
-    }
 }

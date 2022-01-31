@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_cocktailList">
+
+    <fragment
+        android:id="@+id/navigation_cocktailList"
+        android:name="com.mustafacol.coctailrecipe.ui.cocktailList.CocktailListFragment"
+        android:label="@string/title_cocktailList"
+        tools:layout="@layout/cocktail_list_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.mustafacol.coctailrecipe.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/favorites_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_random"
+        android:name="com.mustafacol.coctailrecipe.ui.randomcocktails.RandomCocktailsFragment"
+        android:label="@string/title_random"
+        tools:layout="@layout/random_cocktails_fragment" />
+</navigation>
