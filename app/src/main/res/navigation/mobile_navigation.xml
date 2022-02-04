@@ -7,19 +7,32 @@
 
     <fragment
         android:id="@+id/navigation_cocktailList"
-        android:name="com.mustafacol.coctailrecipe.ui.cocktailList.CocktailListFragment"
+        android:name="com.mustafacol.coctailrecipe.fragments.CocktailListFragment"
         android:label="@string/title_cocktailList"
-        tools:layout="@layout/cocktail_list_fragment" />
+        tools:layout="@layout/cocktail_list_fragment" >
+        <action
+
+            android:id="@+id/action_navigation_cocktailList_to_navigation_cocktail_detail"
+            app:destination="@id/navigation_cocktail_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.mustafacol.coctailrecipe.ui.favorites.FavoritesFragment"
+        android:name="com.mustafacol.coctailrecipe.fragments.FavoritesFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/favorites_fragment" />
 
     <fragment
         android:id="@+id/navigation_random"
-        android:name="com.mustafacol.coctailrecipe.ui.randomcocktails.RandomCocktailsFragment"
+        android:name="com.mustafacol.coctailrecipe.fragments.RandomCocktailsFragment"
         android:label="@string/title_random"
         tools:layout="@layout/random_cocktails_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_cocktail_detail"
+        android:name="com.mustafacol.coctailrecipe.fragments.CocktailDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/cocktall_details_fragment"
+        />
+
 </navigation>

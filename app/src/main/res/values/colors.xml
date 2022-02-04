@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gradientFrom">#151619</color>
+    <color name="gradientTo">#2D1B34</color>
+    <color name="ingredient_bg">#331c3d</color>
+    <color name="yellow">#FFA701</color>
+
 </resources>

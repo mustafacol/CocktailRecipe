@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mustafacol.coctailrecipe.R
@@ -15,7 +17,9 @@ class CocktailsRecyclerViewAdapter(private val drinkList: MutableList<BaseDrink>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_coctail, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.cell_cocktail, parent, false)
+
         return CocktailsViewHolder(view)
     }
 
@@ -30,8 +34,8 @@ class CocktailsRecyclerViewAdapter(private val drinkList: MutableList<BaseDrink>
 
         private val cocktailImage: CircleImageView =
             itemView.findViewById(R.id.cocktail_image)
-        val cocktailName: TextView = itemView.findViewById(R.id.cocktail_name)
-        val cocktailDescription: TextView = itemView.findViewById(R.id.cocktail_instructions)
+        private val cocktailName: TextView = itemView.findViewById(R.id.cocktail_name)
+        private val cocktailDescription: TextView = itemView.findViewById(R.id.cocktail_instructions)
 
 
         fun bindView(drinkItem: BaseDrink) {
@@ -41,6 +45,16 @@ class CocktailsRecyclerViewAdapter(private val drinkList: MutableList<BaseDrink>
                 .into(cocktailImage)
             cocktailName.text = drinkItem.strDrink
             cocktailDescription.text = drinkItem.strInstructions
+
+            itemView.setOnClickListener {
+                val bundle = bundleOf("drinkDetail" to drinkItem)
+                itemView.findNavController().navigate(
+                    R.id.action_navigation_cocktailList_to_navigation_cocktail_detail,
+                    bundle
+                )
+            }
+
+
         }
     }
 

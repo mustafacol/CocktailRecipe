@@ -11,4 +11,9 @@ interface CocktailService {
 
     @GET("search.php?")
     suspend fun getCocktailByName(@Query("s") name: String): Response<Drinks>
+
+    @GET("search.php?")
+    suspend fun getCocktailByFirstLetter(@Query("f") letter: String): Response<Drinks>
+
+
 }

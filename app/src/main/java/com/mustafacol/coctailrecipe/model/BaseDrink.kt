@@ -1,10 +1,16 @@
 package com.mustafacol.coctailrecipe.model
 
+import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class BaseDrink(
     val dateModified: String,
-    val idDrink: String,
+    val idDrink : String ,
     val strAlcoholic: String,
     val strCategory: String,
     val strCreativeCommonsConfirmed: String,
@@ -56,4 +62,4 @@ data class BaseDrink(
     val strMeasure9: String,
     val strTags: String,
     val strVideo: String
-)
+) : Parcelable
