@@ -10,13 +10,15 @@ class CocktailListViewModel : ViewModel() {
     var drinkList = MutableLiveData<Drinks>()
     var drinkListLoadError = MutableLiveData<String?>()
     var loading = MutableLiveData<Boolean>()
+    var oldList = MutableLiveData<Drinks>()
+
     private val retService = RetrofitInstance.retrofitInstance
     var job: Job? = null
 
 
-    fun fetchCocktailsWithName() {
+    fun fetchCocktailsWithName(name: String) {
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = retService.getCocktailByName("margarita")
+            val response = retService.getCocktailByName(name)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     drinkList.value = response.body()
@@ -41,6 +43,9 @@ class CocktailListViewModel : ViewModel() {
             }
         }
     }
+
+
+
 
     override fun onCleared() {
         super.onCleared()

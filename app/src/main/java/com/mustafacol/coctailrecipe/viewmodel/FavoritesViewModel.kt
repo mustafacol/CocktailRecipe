@@ -19,14 +19,16 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val favoriteCocktails = MutableLiveData<List<Cocktail>>()
     val error = MutableLiveData<String>()
+    var firstTimeLoad = true
     var job: Job? = null
 
     fun getFavoriteCocktails() {
-        coroutineScope.launch {
+        job = coroutineScope.launch {
             val list = db.getAllFavoriteCocktails()
             if (list != null) {
                 withContext(Dispatchers.Main) {
                     favoriteCocktails.value = list
+                    firstTimeLoad = false
                 }
             } else {
                 withContext(Dispatchers.Main) {
@@ -34,6 +36,7 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
                 }
             }
         }
+
     }
 
     fun deleteCocktail(cocktail: Cocktail) {
@@ -46,10 +49,9 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
                         favoriteCocktails.value = list
                     }
                 }
-            }
-            else
-                withContext(Dispatchers.Main){
-                    error.value= "Something went wrong."
+            } else
+                withContext(Dispatchers.Main) {
+                    error.value = "Something went wrong."
                 }
         }
     }
@@ -57,5 +59,6 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
     override fun onCleared() {
         super.onCleared()
         job?.cancel()
+        firstTimeLoad = false
     }
 }

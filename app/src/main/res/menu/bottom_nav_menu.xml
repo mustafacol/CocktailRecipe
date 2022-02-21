@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-
     <item
         android:id="@+id/navigation_random"
         android:icon="@drawable/baseline_shuffle_24"
@@ -18,5 +17,9 @@
         android:icon="@drawable/baseline_favorite_24"
         android:title="@string/title_favorites"
         />
+    <item
+        android:id="@+id/navigation_search_by_ingredient"
+        android:icon="@drawable/baseline_science_24"
+        android:title="@string/title_search_by_ingredient"/>
 
 </menu>

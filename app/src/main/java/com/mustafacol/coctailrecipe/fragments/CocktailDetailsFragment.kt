@@ -4,10 +4,13 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.mustafacol.coctailrecipe.ViewModelFactory
@@ -55,7 +58,6 @@ class CocktailDetailsFragment : Fragment() {
 
     private fun setUI() {
         val instructionList = viewModel.getIngredientList()
-        val gridViewAdapter = GridViewAdapter(viewModel.ingredientMap, requireContext())
 
         val instructionAdapter = InstructionRecyclerviewAdapter(instructionList)
         binding.cocktailDetailName.text = baseDrink.strDrink
@@ -67,7 +69,6 @@ class CocktailDetailsFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = instructionAdapter
         }
-        binding.cocktailDetailIngredientGridView.adapter = gridViewAdapter
 
         binding.coctailDetailFavoriteBtn.setOnClickListener {
             viewModel.favoriteButtonClick()
@@ -81,10 +82,21 @@ class CocktailDetailsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.successMessage.observe(viewLifecycleOwner, {
-            if(it.equals("Success"))
-                Toast.makeText(activity, "Cocktail is added to favorite list.", Toast.LENGTH_LONG).show()
+            if (it.equals("Success"))
+                Toast.makeText(activity, "Cocktail is added to favorite list.", Toast.LENGTH_LONG)
+                    .show()
+        })
+
+        viewModel.ingredientMap.observe(viewLifecycleOwner, Observer {
+            val gridViewAdapter =
+                GridViewAdapter(viewModel.ingredientMap.value?.toMutableMap()!!, requireContext())
+            binding.cocktailDetailIngredientGridView.adapter = gridViewAdapter
+
+
         })
     }
+
+
 
 
 }

@@ -7,19 +7,22 @@ import com.mustafacol.coctailrecipe.model.Cocktail
 import com.mustafacol.coctailrecipe.model.CocktailIngredient
 import com.mustafacol.coctailrecipe.model.createIngredientMap
 import com.mustafacol.coctailrecipe.repository.CocktailsRepository
+import com.mustafacol.coctailrecipe.retrofit.RetrofitInstance
 import kotlinx.coroutines.*
 
 class CocktailDetailsViewModel(
     private val repository: CocktailsRepository
 ) : ViewModel() {
-    var ingredientMap = mutableMapOf<String, CocktailIngredient>()
+    var ingredientMap = MutableLiveData<Map<String, CocktailIngredient>>()
     var cocktailDetails = MutableLiveData<BaseDrink>()
     var successMessage = MutableLiveData<String>()
     var job: Job? = null
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val retrofit by lazy { RetrofitInstance.retrofitInstance }
 
 
     fun setIngredientMap() {
-        ingredientMap = createIngredientMap(cocktailDetails.value!!)
+        ingredientMap.value = createIngredientMap(cocktailDetails.value!!)!!
     }
 
     fun setCocktailDetails(baseDrink: BaseDrink) {
@@ -50,14 +53,13 @@ class CocktailDetailsViewModel(
     }
 
     fun favoriteButtonClick() {
-        job = CoroutineScope(Dispatchers.IO).launch {
+        job = coroutineScope.launch {
             val result = favoriteCocktail(cocktailDetails.value!!)
             withContext(Dispatchers.Main) {
                 successMessage.value = if (result > 0)
                     "Success"
                 else
                     "Fail"
-
 
                 successMessage.value = "Hold"
 
@@ -66,6 +68,20 @@ class CocktailDetailsViewModel(
 
         }
 
+    }
+
+    fun getRandomCocktails() {
+        job = coroutineScope.launch {
+            val response = retrofit.getRandomCocktail()
+            if (response.isSuccessful && response.body() != null) {
+                withContext(Dispatchers.Main) {
+                    setCocktailDetails(response.body()?.drinks?.get(0)!!)
+
+                    setIngredientMap()
+                }
+
+            }
+        }
     }
 
     override fun onCleared() {

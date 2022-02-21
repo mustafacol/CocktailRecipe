@@ -1,5 +1,11 @@
 package com.mustafacol.coctailrecipe.model
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.lifecycle.MutableLiveData
+import java.io.IOException
+import java.net.URL
+
 val alphabet = listOf<String>(
     "a",
     "b",
@@ -82,7 +88,7 @@ val emptyBaseDrink = BaseDrink(
     strVideo = "",
 )
 
-fun createIngredientMap(detailedCocktail: BaseDrink): MutableMap<String, CocktailIngredient> {
+fun createIngredientMap(detailedCocktail: BaseDrink): Map<String, CocktailIngredient>? {
     var ingredientMap = mutableMapOf<String, CocktailIngredient>()
     if (detailedCocktail.strIngredient1 != null) {
         ingredientMap.put(
@@ -249,6 +255,15 @@ fun createIngredientMap(detailedCocktail: BaseDrink): MutableMap<String, Cocktai
     return ingredientMap
 
 
+}
+
+
+fun URL.toBitmap(): Bitmap?{
+    return try {
+        BitmapFactory.decodeStream(openStream())
+    }catch (e: IOException){
+        null
+    }
 }
 
 

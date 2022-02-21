@@ -34,5 +34,11 @@
         android:label="Details"
         tools:layout="@layout/cocktall_details_fragment"
         />
+    <fragment
+        android:id="@+id/navigation_search_by_ingredient"
+        android:name="com.mustafacol.coctailrecipe.fragments.SearchByIngredientFragment"
+        android:label="@string/title_search_by_ingredient"
+        tools:layout="@layout/fragment_search_by_ingredient" />
+
 
 </navigation>

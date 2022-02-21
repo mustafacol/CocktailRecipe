@@ -1,14 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.RandomCocktailsFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/cocktail_random_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Random Cocktails Fragment" />
+        android:scaleType="centerCrop"
+        android:layout_weight="3"
+        android:src="@drawable/ginfizz" />
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-20dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/gradient_background_purple">
+
+                <TextView
+                    android:id="@+id/cocktail_random_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/supermercado_one"
+                    android:text="Gin Fizz"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/coctail_random_favorite_btn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/baseline_favorite_24"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/cocktail_random_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cocktail_random_name"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_glass_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="32dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Glass Type"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_name" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_glass_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Long"
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cocktail_random_glass_txt"
+                    app:layout_constraintStart_toStartOf="@id/cocktail_random_glass_txt"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_glass_txt" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_type_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="32dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Category"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/cocktail_random_alcoholic_txt"
+                    app:layout_constraintStart_toEndOf="@id/cocktail_random_glass_txt"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_name" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_category_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Shot"
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cocktail_random_type_txt"
+                    app:layout_constraintStart_toStartOf="@id/cocktail_random_type_txt"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_type_txt" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_alcoholic_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="32dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Alcoholic"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_name" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_alcoholic_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alcoholic"
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cocktail_random_alcoholic_txt"
+                    app:layout_constraintStart_toStartOf="@id/cocktail_random_alcoholic_txt"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_alcoholic_txt" />
+
+
+                <TextView
+                    android:id="@+id/cocktail_random_ingredient_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/supermercado_one"
+                    android:text="Ingredients"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_glass_type" />
+
+
+                <GridView
+                    android:id="@+id/cocktail_random_ingredient_gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:horizontalSpacing="6dp"
+                    android:numColumns="2"
+                    android:verticalSpacing="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_ingredient_txt" />
+
+                <TextView
+                    android:id="@+id/cocktail_random_instruction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/supermercado_one"
+                    android:text="Instructions"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_ingredient_gridView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cocktail_random_instruction_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cocktail_random_instruction" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
