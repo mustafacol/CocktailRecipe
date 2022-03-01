@@ -12,10 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CocktailRecipe">
-        <activity
-            android:name=".SecondActivity"
-            android:exported="true"
-            android:label="@string/title_activity_second" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

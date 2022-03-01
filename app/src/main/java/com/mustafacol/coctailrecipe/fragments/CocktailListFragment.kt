@@ -56,14 +56,14 @@ class CocktailListFragment : Fragment() {
         val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         cocktailRecyclerView.apply {
             layoutManager = mLayoutManager
-            adapter = CocktailsRecyclerViewAdapter(cocktailDrinkList)
+            adapter = CocktailsRecyclerViewAdapter(context, cocktailDrinkList)
         }
 
 
 
         cocktailRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0 && !isSearching ) {
+                if (dy > 0 && !isSearching) {
                     var visibleItemCount = mLayoutManager.childCount
                     var totalItemCount = mLayoutManager.itemCount
                     var pastVisibleItems = mLayoutManager.findFirstVisibleItemPosition()

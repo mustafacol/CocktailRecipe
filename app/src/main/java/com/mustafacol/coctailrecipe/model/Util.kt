@@ -3,9 +3,26 @@ package com.mustafacol.coctailrecipe.model
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
+import com.mustafacol.coctailrecipe.R
 import java.io.IOException
 import java.net.URL
 
+val darkColorList = listOf(
+    R.color.base_red_dark,
+    R.color.base_orange_dark,
+    R.color.base_yellow_dark,
+    R.color.base_green_dark,
+    R.color.base_blue_dark,
+    R.color.base_purple_dark,
+)
+val colorList = listOf(
+    R.color.base_red,
+    R.color.base_orange,
+    R.color.base_yellow,
+    R.color.base_green,
+    R.color.base_blue,
+    R.color.base_purple,
+)
 val alphabet = listOf<String>(
     "a",
     "b",

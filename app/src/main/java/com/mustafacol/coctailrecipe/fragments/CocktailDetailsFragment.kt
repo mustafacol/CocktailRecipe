@@ -57,6 +57,8 @@ class CocktailDetailsFragment : Fragment() {
     }
 
     private fun setUI() {
+        binding.cocktailDetailProgressBar.visibility= View.VISIBLE
+        binding.cocktailDetailContainer.visibility= View.GONE
         val instructionList = viewModel.getIngredientList()
 
         val instructionAdapter = InstructionRecyclerviewAdapter(instructionList)
@@ -88,12 +90,12 @@ class CocktailDetailsFragment : Fragment() {
         })
 
         viewModel.ingredientMap.observe(viewLifecycleOwner, Observer {
-            val gridViewAdapter =
-                GridViewAdapter(viewModel.ingredientMap.value?.toMutableMap()!!, requireContext())
+            val gridViewAdapter = GridViewAdapter(viewModel.ingredientMap.value?.toMutableMap()!!, requireContext())
             binding.cocktailDetailIngredientGridView.adapter = gridViewAdapter
 
-
         })
+        binding.cocktailDetailProgressBar.visibility= View.GONE
+        binding.cocktailDetailContainer.visibility= View.VISIBLE
     }
 
 

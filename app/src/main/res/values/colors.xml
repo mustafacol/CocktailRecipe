@@ -12,4 +12,55 @@
     <color name="ingredient_bg">#331c3d</color>
     <color name="yellow">#FFA701</color>
 
+
+
+    <color name="base_textColor_dark">#1A3B34</color>
+    <color name="base_textColor_light">#FFFFFF</color>
+    <color name="base_background_light">#FFFFFF</color>
+    <color name="base_background_dark">#1F2E35</color>
+    <color name="base_bottom_navigation_bar_background">#30444E</color>
+    <color name="base_bottom_nav_bar_item_color">#96A7AF</color>
+
+
+    <color name="base_boxColor_dark">@color/base_bottom_navigation_bar_background</color>
+    <color name="base_boxColor_light">#F2F3FB</color>
+
+    <color name="base_red_trans_light">#FFE5E7</color>
+    <color name="base_red">#FF464F</color>
+    <color name="base_red_light">#FF575F</color>
+    <color name="base_red_dark">#623A42</color>
+
+
+    <color name="base_orange">#FF8A34</color>
+    <color name="base_orange_trans_light">#FFEFE3</color>
+    <color name="base_orange_light">#FF974A</color>
+    <color name="base_orange_dark">#624D3B</color>
+
+    <color name="base_yellow">#FFBC25</color>
+    <color name="base_yellow_trans_light">#FEF3D9</color>
+    <color name="base_yellow_light">#FFC542</color>
+    <color name="base_yellow_dark">#625B39</color>
+
+    <color name="base_green">#25C685</color>
+    <color name="base_green_trans_light">#D4F5E9</color>
+    <color name="base_green_light">#3DD598</color>
+    <color name="base_green_dark">#286053</color>
+
+    <color name="base_blue">#005DF2</color>
+    <color name="base_blue_trans_light">#E3EEFF</color>
+    <color name="base_blue_light">#0062FF</color>
+    <color name="base_blue_dark">#163E72</color>
+
+    <color name="base_purple">#6952DC</color>
+    <color name="base_purple_trans_light">#EDEAFD</color>
+    <color name="base_purple_light">#755FE2</color>
+    <color name="base_purple_dark">#393D69</color>
+
+
+    <color name="base_grey_light">#96A7AF</color>
+    <color name="base_grey">#475E69</color>
+    <color name="base_grey_dark">#30444E</color>
+
+
+
 </resources>

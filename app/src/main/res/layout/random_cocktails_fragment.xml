@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/base_backgroundColor"
     tools:context=".fragments.RandomCocktailsFragment">
 
     <ImageView
@@ -41,7 +42,7 @@
                     android:layout_margin="16dp"
                     android:fontFamily="@font/supermercado_one"
                     android:text="Gin Fizz"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="30sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +57,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/cocktail_random_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/cocktail_random_name"
-                    app:tint="@color/white" />
+                    app:tint="?attr/base_textColor" />
 
                 <TextView
                     android:id="@+id/cocktail_random_glass_txt"
@@ -65,7 +66,7 @@
                     android:layout_margin="32dp"
                     android:fontFamily="@font/roboto"
                     android:text="Glass Type"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cocktail_random_name" />
@@ -90,7 +91,7 @@
                     android:layout_margin="32dp"
                     android:fontFamily="@font/roboto"
                     android:text="Category"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@id/cocktail_random_alcoholic_txt"
                     app:layout_constraintStart_toEndOf="@id/cocktail_random_glass_txt"
@@ -116,7 +117,7 @@
                     android:layout_margin="32dp"
                     android:fontFamily="@font/roboto"
                     android:text="Alcoholic"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cocktail_random_name" />
@@ -143,7 +144,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/supermercado_one"
                     android:text="Ingredients"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cocktail_random_glass_type" />
@@ -169,7 +170,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/supermercado_one"
                     android:text="Instructions"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/base_textColor"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cocktail_random_ingredient_gridView" />

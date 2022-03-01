@@ -43,7 +43,7 @@ class SearchByIngredientFragment : Fragment() {
 
         setUi()
 
-        setObservers()
+        setupObservers()
 
         return root
     }
@@ -71,14 +71,14 @@ class SearchByIngredientFragment : Fragment() {
         val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.apply {
             layoutManager = mLayoutManager
-            adapter = SearchCocktailRecyclerViewAdapter(cocktailDrinkList)
+            adapter = SearchCocktailRecyclerViewAdapter(cocktailDrinkList, viewModel, context)
         }
     }
 
-    private fun setObservers() {
+    private fun setupObservers() {
         viewModel.basicCocktailList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                cocktailDrinkList = it as MutableList<BasicCocktail>
+                cocktailDrinkList.addAll(it)
                 recyclerView.adapter?.notifyDataSetChanged()
             }
 

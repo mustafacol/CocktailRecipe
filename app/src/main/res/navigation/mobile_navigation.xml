@@ -26,7 +26,9 @@
         android:id="@+id/navigation_random"
         android:name="com.mustafacol.coctailrecipe.fragments.RandomCocktailsFragment"
         android:label="@string/title_random"
-        tools:layout="@layout/random_cocktails_fragment" />
+        tools:layout="@layout/random_cocktails_fragment" >
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cocktail_detail"
@@ -38,7 +40,11 @@
         android:id="@+id/navigation_search_by_ingredient"
         android:name="com.mustafacol.coctailrecipe.fragments.SearchByIngredientFragment"
         android:label="@string/title_search_by_ingredient"
-        tools:layout="@layout/fragment_search_by_ingredient" />
+        tools:layout="@layout/fragment_search_by_ingredient" >
+        <action
+            android:id="@+id/action_navigation_search_by_ingredient_to_navigation_cocktail_detail"
+            app:destination="@id/navigation_cocktail_detail" />
+    </fragment>
 
 
 </navigation>

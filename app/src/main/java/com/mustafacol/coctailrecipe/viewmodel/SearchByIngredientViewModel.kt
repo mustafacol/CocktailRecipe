@@ -1,31 +1,46 @@
 package com.mustafacol.coctailrecipe.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
+import com.mustafacol.coctailrecipe.model.BaseDrink
 import com.mustafacol.coctailrecipe.model.BasicCocktail
-import com.mustafacol.coctailrecipe.model.BasicCocktailResponse
 import com.mustafacol.coctailrecipe.retrofit.RetrofitInstance
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.ResponseBody
 
 class SearchByIngredientViewModel : ViewModel() {
 
     private val retService = RetrofitInstance.retrofitInstance
     var basicCocktailList = MutableLiveData<List<BasicCocktail>>()
-
+    var clickedCocktail = MutableLiveData<BaseDrink>()
 
     fun getCocktailByIngredient(ingredient: String) {
 
         viewModelScope.launch {
-            var response = retService.getCocktailByIngredient(ingredient)
+            val response = retService.getCocktailByIngredient(ingredient)
 
+            if (response.body()?.drinks.isNullOrEmpty()) {
+                basicCocktailList.value = emptyList()
+            } else {
+                basicCocktailList.value = response.body()?.drinks
+            }
 
         }
+    }
+
+    suspend fun getCocktailsById(cocktailId: String) {
+        withContext(viewModelScope.coroutineContext) {
+            val response = retService.getCocktailsById(cocktailId)
+
+            if (response.isSuccessful && !response.body()?.drinks.isNullOrEmpty()) {
+                withContext(Dispatchers.Main) {
+                    clickedCocktail.value = response.body()?.drinks?.get(0)
+
+                }
+            }
+        }
+
     }
 }
